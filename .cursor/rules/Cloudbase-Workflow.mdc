@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+---
+
+0. You MUST read the cloudbase-guidelines skill FIRST when working with CloudBase projects.
+1. 评估：写代码前，必须显式评估可用 Skills 列表
+2. 承诺：必须在输出中陈述 "我需要调用某个 skill" 的理由
+3. 执行：禁止跳过规矩直接写代码
