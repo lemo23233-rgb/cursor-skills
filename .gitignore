@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# WeChat miniprogram npm build output
+miniprogram_npm/
+miniprogram_dist/
+
+# Build / output
+dist/
+*.local
+
+# Logs & temp
+*.log
+npm-debug.log*
+.tmp
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE (optional, remove if you want to share)
+.idea/
+*.iml
+.vscode/
+
+# Private project config (appid / personal settings)
+project.private.config.json
+
+# Env / secrets (if any)
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage/

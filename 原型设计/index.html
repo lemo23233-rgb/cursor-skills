@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1152d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "system-ui", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .storybook-gradient {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">故事书助手</h2>
+</div>
+<!-- Hero Section -->
+<div class="px-6 py-8 flex flex-col items-center text-center">
+<div class="w-24 h-24 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl">auto_stories</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 tracking-light text-3xl font-extrabold leading-tight pb-3">
+                创作你的奇幻世界
+            </h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-medium max-w-[280px]">
+                输入主题，AI 生成故事与连环画插画
+            </p>
+</div>
+<!-- Main Action Area -->
+<div class="flex px-6 py-4 justify-center">
+<div class="w-full max-w-[480px] p-1 rounded-xl bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20">
+<button class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-16 px-5 bg-primary text-white gap-3 text-lg font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-2xl">magic_button</span>
+<span>开始创作</span>
+</button>
+</div>
+</div>
+<!-- Disclaimer Section -->
+<div class="px-6 py-2 flex flex-col gap-1 items-center">
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-sm">info</span>
+<p>需在设置中配置 API Key 方可使用</p>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-[10px]">试用阶段，用量以火山引擎为准</p>
+</div>
+<!-- Recent Works -->
+<div class="mt-8 px-6">
+<div class="flex items-center justify-between pb-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">最近作品</h2>
+<button class="text-primary text-sm font-semibold">查看全部</button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Latest Work Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700">
+<div class="flex h-32 w-full">
+<img alt="Story cover" class="w-32 h-full object-cover" data-alt="Illustration of a small house in a magical forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQsSRDmazsnZo7webZQ1nHnvLI_YcjlgqGQWj831t2QdM94wuqkdEW7EkssJQMAT2MN0aFrrlPaecW5C1RHlrYlKZnoKYeCWh2VYpoQJKOLfOshZujBfydkHy8f6YjkX-_jSmWXaKd_hGzAEAxSvV_PDHZFVRt7IkNOt46n-tAMr2c8k5DRSfi0Hz-VYuKDe2gymym5d6AIo6W1L3pmSW5zZ8_wkq_YZqIBfk1RjM7a_a6XP43Yg6TwzRt_QglLe2UVK2Q9YMqJ2rn"/>
+<div class="p-4 flex flex-col justify-center flex-1">
+<h3 class="text-slate-900 dark:text-slate-100 font-bold text-base mb-1">森林里的小树屋</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs line-clamp-2">在一个遥远的森林里，住着一只会说话的小松鼠...</p>
+<div class="mt-2 flex items-center text-[10px] text-slate-400 font-medium uppercase tracking-wider">
+<span>122 字符</span>
+<span class="mx-2">•</span>
+<span>4 幅插画</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Placeholder for another card -->
+<div class="bg-slate-100/50 dark:bg-slate-800/30 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 h-32 flex items-center justify-center">
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+<span class="text-xs font-medium">创建新故事</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for footer -->
+<div class="h-24"></div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50">
+<div class="flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-4 pb-8 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1">auto_stories</span>
+</div>
+<p class="text-xs font-bold leading-normal tracking-[0.015em]">创作</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">设置</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1152d4",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>作品详情 - 视觉故事展示</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="sticky top-0 z-50 flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">作品详情</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">more_horiz</span>
+</button>
+</div>
+</nav>
+<!-- Header Info -->
+<header class="px-6 pt-8 pb-4">
+<div class="flex flex-col gap-2">
+<span class="text-primary font-semibold text-sm uppercase tracking-wider">Chapter 01</span>
+<h1 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">遗忘之境的觉醒</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                    最后编辑于 2023年10月24日
+                </p>
+</div>
+</header>
+<!-- Story Panels Scroll -->
+<main class="flex flex-col gap-8 p-6">
+<!-- Panel 1 -->
+<article class="flex flex-col gap-4 group">
+<div class="relative overflow-hidden rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Cinematic shot of a misty forest with golden morning light" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfo6WQtM46tngj6fQRUt1GYMtHEzovxPSndUOKmomnKPe4bDz9WX4oxkwFzKX0xW3b9yh9tdTYr2Ljr_waQGB5AcWUJyn0To52PtGYVhV60wdrZN1Fe6qjY_AU1NNoRHJ7Ru0iT_1lPupgbnuvxlePJut_U93VxycoIGOG_qmhANKHrWQqW1TgQXfR0zCXmz-F0HBEaHWY4sE2obQcm53DJoEaFKHGIdRb057qOneQ2j3mdDbhrkE4FUe5Oj7qHkbk3eCudPsMVVS-");'>
+</div>
+<div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-medium">
+                        分镜 01
+                    </div>
+</div>
+<div class="space-y-2 px-1">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">密林深处</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                        清晨的微光穿透厚重的森林迷雾，少年独自站在被遗忘的遗迹入口。他手中的古老项链在阴影中开始发出微弱的、有节奏的蓝光，仿佛在回应某种来自地底的召唤。
+                    </p>
+</div>
+</article>
+<!-- Panel 2 -->
+<article class="flex flex-col gap-4 group">
+<div class="relative overflow-hidden rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Close up of an ancient stone door opening with dust particles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7_q_zIwOsY5sV9lZUwEVvA5lwHOu8xOnfSbBA4e9pvIE_caq0qjv8dUwV7N24dJqfLPWBER8xcnTuqZNMpaGCVaI5-sixg4vqnxSJxyJ6Ycs51B4JYykrIJHULw8YjRA4Uk6zqX68--M2ceqeXS59NHkuwuuwAbet33Jjz0iO2QUhe3VcEuaAlkVHkRag2PKbu5nllTTnnwEUUPecX7SqnTKfWJSy8zAVMhSIVj7mh8wbbLU4P2P4h27OqxGu3opNRGj3TZ-MblCD");'>
+</div>
+<div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-medium">
+                        分镜 02
+                    </div>
+</div>
+<div class="space-y-2 px-1">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">尘封之门</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                        沉重的石门在几千年的静默后缓缓开启，刺耳的摩擦声打破了荒野的宁静。陈旧的灰尘在光柱中飞舞，门后的黑暗深处隐约可见一座宏伟王座的轮廓。
+                    </p>
+</div>
+</article>
+<!-- Panel 3 -->
+<article class="flex flex-col gap-4 group pb-12">
+<div class="relative overflow-hidden rounded-xl shadow-lg border border-slate-200 dark:border-slate-800">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Dramatic interior of a vast ancient hall with glowing crystals" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLLONdkm0NhVb-ZKX--JCcLtfWZi6r7pg6j3uSm6bXOTNK93beAH-kuYALE2aZiRuhXAX57Reo_1qHpPNv9QNQvAwXH7ETGwyYVXEaL-gJ5YbN1pk5qYc2roX2XT31afwe9bZAO3qNZFH2LGPKcTBG7tYo3duFZlX2C-2-jebmEuj-Zi0zq2pzZGsKxFu81yESM9WQR3HiE3wyfClMy0LLFO6AYsDa4hNy2UE85qE6IBPtaX4Eanl4MuAyZX58VKwpAVehtu38i6Cu");'>
+</div>
+<div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-xs font-medium">
+                        分镜 03
+                    </div>
+</div>
+<div class="space-y-2 px-1">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">命运的契约</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                        少年踏入宏伟的殿堂，沉重的脚步声在空旷的空间内产生阵阵回响。随着他的靠近，两旁的晶石逐一亮起，照亮了墙壁上记载着失落文明历史的壁画。
+                    </p>
+</div>
+</article>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white h-14 rounded-xl font-bold transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                保存图片
+            </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-white h-14 rounded-xl font-bold shadow-lg shadow-primary/25 transition-all active:scale-95">
+<span class="material-symbols-outlined">share</span>
+                分享作品
+            </button>
+</footer>
+<!-- Spacer for footer -->
+<div class="h-24"></div>
+</div>
+</body></html>
