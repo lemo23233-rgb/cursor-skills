@@ -1,4 +1,13 @@
-/**app.wxss**/
+/**app.wxss - 与原型一致：主色、背景、圆角 **/
+page {
+  --primary: #1152d4;
+  --bg-light: #f6f6f8;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border: rgba(15, 23, 42, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+}
 .container {
   height: 100%;
   display: flex;

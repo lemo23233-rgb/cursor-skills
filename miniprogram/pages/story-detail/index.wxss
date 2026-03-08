@@ -1,0 +1,215 @@
+.loading-wrap {
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+}
+
+.loading {
+  padding: 80rpx 28rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #64748b;
+}
+
+
+/* 自定义导航栏，高度由 JS 动态设置 */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  display: flex;
+  align-items: center;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  box-sizing: border-box;
+}
+
+.nav-home {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 999px;
+  background: rgba(17, 82, 212, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-home-icon {
+  font-size: 40rpx;
+  color: #1152d4;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.nav-placeholder {
+  width: 72rpx;
+}
+
+/* 分享引导 */
+.share-guide {
+  margin: 20rpx 28rpx;
+  padding: 24rpx;
+  background: rgba(17, 82, 212, 0.08);
+  border-radius: 20rpx;
+  border: 1px solid rgba(17, 82, 212, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.share-guide-icon {
+  font-size: 44rpx;
+}
+
+.share-guide-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.share-guide-title {
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #1152d4;
+}
+
+.share-guide-desc {
+  font-size: 24rpx;
+  color: #64748b;
+}
+
+.page {
+  min-height: 100vh;
+  background: #f6f6f8;
+  padding-bottom: 60rpx;
+}
+
+.header {
+  padding: 30rpx 28rpx 10rpx;
+}
+
+.chapter {
+  font-size: 22rpx;
+  font-weight: 800;
+  color: #1152d4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 10rpx;
+  font-size: 48rpx;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.meta {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #64748b;
+}
+
+.panel {
+  margin: 22rpx 28rpx 0;
+  border-radius: 24rpx;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: #fff;
+}
+
+.panel-media {
+  position: relative;
+  width: 100%;
+  /* height: 360rpx; */
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.img {
+  width: 100%;
+  /* height: 360rpx; */
+}
+
+.badge {
+  position: absolute;
+  left: 18rpx;
+  top: 18rpx;
+  font-size: 22rpx;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8rpx 12rpx;
+  border-radius: 999px;
+}
+
+.panel-body {
+  padding: 18rpx 18rpx 20rpx;
+}
+
+.panel-title {
+  font-size: 28rpx;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.panel-text {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.save-btn {
+  padding: 0;
+  margin-top: 16rpx;
+  width: 100%;
+  height: 84rpx;
+  line-height: 84rpx;
+  border-radius: 18rpx;
+  background: rgba(17, 82, 212, 0.10);
+  color: #1152d4;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.spacer {
+  height: 24rpx;
+}
+
+
+.empty {
+  padding: 80rpx 28rpx 0;
+}
+
+.empty-title {
+  font-size: 34rpx;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.empty-desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #64748b;
+}
+
+.primary {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 20rpx;
+  background: #1152d4;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+

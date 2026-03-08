@@ -1,5 +1,8 @@
 # Dependencies
 node_modules/
+cloud-functions/*/node_modules
+cloudfunctions/*/node_modules
+cloud-functions/*/miniprogram_npm
 
 # WeChat miniprogram npm build output
 miniprogram_npm/

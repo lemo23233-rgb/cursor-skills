@@ -1,6 +1,8 @@
 {
   "description": "项目配置文件",
   "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "cloudbaseConfig": "cloud1-5gdvdpus1a4a4426",
   "compileType": "miniprogram",
   "setting": {
     "useCompilerPlugins": [
@@ -12,15 +14,15 @@
       "outputPath": ""
     },
     "coverView": false,
-    "postcss": false,
-    "minified": false,
-    "enhance": false,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
     "showShadowRootInWxmlPanel": false,
     "packNpmRelationList": [],
     "ignoreUploadUnusedFiles": true,
     "compileHotReLoad": false,
     "skylineRenderEnable": true,
-    "es6": false,
+    "es6": true,
     "compileWorklet": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,

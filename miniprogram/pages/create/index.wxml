@@ -1,0 +1,99 @@
+<scroll-view class="page" scroll-y type="list">
+  <!-- 进度条：生成大纲后定位到第2步 -->
+  <view class="progress">
+    <view class="progress-step {{outline ? 'progress-step-done' : 'progress-step-active'}}">
+      <view class="progress-num">{{outline ? '✓' : '1'}}</view>
+      <view class="progress-label">构思</view>
+    </view>
+    <view class="progress-line {{outline ? 'progress-line-active' : ''}}"></view>
+    <view class="progress-step {{outline ? 'progress-step-active' : 'progress-step-disabled'}}">
+      <view class="progress-num">2</view>
+      <view class="progress-label">大纲</view>
+    </view>
+    <view class="progress-line {{outline ? 'progress-line-active' : ''}}"></view>
+    <view class="progress-step progress-step-disabled">
+      <view class="progress-num">3</view>
+      <view class="progress-label">插画</view>
+    </view>
+  </view>
+
+  <!-- 第 1 步：构思 -->
+  <view class="section">
+    <view class="h1">第1步：构思你的故事</view>
+    <view class="p">告诉 AI 你想写什么样的故事，我们会为你细化细节。</view>
+
+    <view class="field">
+      <view class="label">故事主题 / 梗概</view>
+      <textarea
+        class="textarea"
+        value="{{topic}}"
+        placeholder="输入你想创作的故事背景、主题或具体梗概... 例如：一个在赛博朋克城市中寻找遗失记忆的机器猫。"
+        bindinput="onTopicInput"
+      />
+    </view>
+
+    <view class="field-btn">
+      <button class="primary primary-with-icon" bindtap="generateText" loading="{{generatingText}}" disabled="{{generatingText}}">
+        <text class="primary-icon">✨</text>
+        <text>生成大纲与分镜</text>
+      </button>
+    </view>
+    <view class="hint" wx:if="{{!outline}}">约需 20-60 秒，请勿离开页面</view>
+  </view>
+
+  <view class="divider" wx:if="{{outline}}"></view>
+
+  <!-- 第 2 步：确认大纲与分镜 -->
+  <view class="section" wx:if="{{outline}}">
+    <view class="h2-row">
+      <view class="h2">第2步：确认大纲与分镜</view>
+      <view class="tag">草稿生成</view>
+    </view>
+
+    <view class="card card-outline">
+      <view class="card-header">
+        <text class="card-icon">📄</text>
+        <view class="card-title">故事大纲</view>
+      </view>
+      <view class="outline-wrap">
+        <textarea class="outline" value="{{outline}}" bindinput="onOutlineInput" placeholder="故事大纲内容..." />
+      </view>
+    </view>
+
+    <view class="h2-row h2-row-scenes">
+      <view class="card-header">
+        <text class="card-icon">🎬</text>
+        <view class="card-title">分镜文案</view>
+      </view>
+      <button class="link" bindtap="addScene">增加场景</button>
+    </view>
+
+    <view class="scene" wx:for="{{scenes}}" wx:key="index">
+      <view class="scene-head">
+        <view class="scene-no">场景 {{index + 1}}</view>
+        <button class="scene-delete" data-index="{{index}}" bindtap="removeScene">删除</button>
+      </view>
+      <textarea
+        class="scene-text"
+        value="{{item}}"
+        data-index="{{index}}"
+        bindinput="onSceneInput"
+        placeholder="描述这一镜的画面、人物、环境与镜头感…"
+      />
+    </view>
+
+    <button
+      class="primary primary-with-icon"
+      bindtap="generateImages"
+      loading="{{generatingImages}}"
+      disabled="{{generatingImages || scenes.length === 0}}"
+    >
+      <text class="primary-icon">🎨</text>
+      <text>生成连环画插画</text>
+    </button>
+    <view class="hint">生成过程预计需要 30-60 秒，请保持页面开启</view>
+  </view>
+
+  <view class="spacer"></view>
+</scroll-view>
+

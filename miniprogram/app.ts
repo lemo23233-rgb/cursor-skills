@@ -2,17 +2,14 @@
 App<IAppOption>({
   globalData: {},
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    if (!wx.cloud) {
+      console.error('当前基础库不支持 wx.cloud，请升级微信版本或基础库版本')
+      return
+    }
 
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      },
+    wx.cloud.init({
+      env: wx.cloud.DYNAMIC_CURRENT_ENV,
+      traceUser: true,
     })
   },
 })

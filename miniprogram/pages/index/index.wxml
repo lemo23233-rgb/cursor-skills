@@ -1,27 +1,80 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+<scroll-view class="page" scroll-y type="list">
+  <!-- Hero：圆形图标 + 标题 + 副标题 -->
+  <view class="hero">
+    <view class="hero-icon-wrap">
+      <text class="hero-icon">📖</text>
     </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+    <view class="hero-title">创作你的奇幻世界</view>
+    <view class="hero-subtitle">输入主题，AI 生成故事与连环画插画</view>
+  </view>
+
+  <!-- 主操作区：原型为渐变描边容器包住主按钮 -->
+  <view class="main-action">
+    <button class="primary-btn" bindtap="goCreate">
+      <text class="primary-btn-icon">✦</text>
+      <text>开始创作</text>
+    </button>
+    <!-- 始终显示：需在设置中配置 API Key 方可使用，左侧提示图标 -->
+    <view class="disclaimer">
+      <icon type="info" size="14" color="#64748b" class="disclaimer-icon"/>
+      <text class="hint">需在设置中配置 API Key 方可使用</text>
+    </view>
+    <view class="hint-secondary">试用阶段，用量以火山引擎为准</view>
+  </view>
+
+  <!-- 最近作品 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">最近作品</view>
+      <view class="section-all">
+        <button class="link-btn" bindtap="goStoryList">查看全部</button>
+      </view>
+    </view>
+
+    <view class="loading" wx:if="{{loading && !loadError}}">加载中…</view>
+    <view class="load-error" wx:if="{{loadError}}">{{loadError}}</view>
+
+    <!-- 卡片：左图右文，封面用首张插画，标题单行，描述20字，字符数 -->
+    <view class="card card-horizontal" wx:if="{{!loading && recent}}" bindtap="goRecent">
+      <view class="card-cover">
+        <image wx:if="{{recent.coverUrl}}" class="card-cover-img" src="{{recent.coverUrl}}" mode="aspectFill"/>
+        <view wx:else class="card-cover-placeholder">
+          <text class="card-cover-emoji">📖</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="card-title card-title-single">{{recent.topic}}</view>
+        <view class="card-desc">{{recent.outlineShort}}</view>
+        <view class="card-meta">
+          <text>{{recent.charCount}} 字符</text>
+          <text class="dot">•</text>
+          <text>{{recent.sceneCount}} 幅插画</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 创建新故事卡片（参考原型：虚线框 + add 图标 + 文案，始终显示在列表下方） -->
+    <view class="create-card" bindtap="goCreate">
+      <view class="create-card-inner">
+        <view class="create-card-icon-wrap">
+          <text class="create-card-icon">＋</text>
+        </view>
+        <view class="create-card-title">创建新故事</view>
+      </view>
     </view>
   </view>
+
+  <view class="spacer"></view>
 </scroll-view>
+
+<!-- 底部 Tab 栏（与原型一致） -->
+<view class="tabbar">
+  <view class="tabbar-item tabbar-item-active" bindtap="goCreate">
+    <text class="tabbar-icon">📖</text>
+    <text class="tabbar-label">创作</text>
+  </view>
+  <view class="tabbar-item" bindtap="goSettings">
+    <text class="tabbar-icon">⚙</text>
+    <text class="tabbar-label">设置</text>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="page">
+  <!-- 自定义导航栏（参考 settings.html） -->
+  <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <text class="nav-back-icon">‹</text>
+    </view>
+    <view class="nav-title">设置</view>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="content" style="padding-top: {{contentPaddingTop}}px;">
+    <view class="section">
+      <view class="section-title">火山方舟配置</view>
+      <view class="section-subtitle">配置您的 API 访问权限以启用 AI 服务</view>
+    </view>
+
+    <view class="form-card">
+      <view class="label">火山方舟 API Key</view>
+      <view class="input-row">
+        <input
+          class="input"
+          placeholder="请输入您的 API Key"
+          password="{{!showKey}}"
+          value="{{apiKey}}"
+          bindinput="onInput"
+        />
+        <view class="input-suffix" bindtap="toggleShow">
+          <text class="eye-text">{{showKey ? '隐藏' : '显示'}}</text>
+        </view>
+      </view>
+
+      <view class="btn-row">
+        <button class="btn-primary" bindtap="save">保存配置</button>
+        <button class="btn-secondary" bindtap="clear">清除</button>
+      </view>
+    </view>
+
+    <view class="doc-card">
+      <view class="doc-left">
+        <view class="doc-title">如何获取 API Key？</view>
+        <view class="doc-subtitle">查看官方文档以获取您的 API 访问密钥</view>
+      </view>
+      <view class="doc-btn" bindtap="copyDoc">
+        <text>查看文档</text>
+        <text class="doc-btn-arrow">→</text>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      <text class="disclaimer-icon">ℹ</text>
+      <view class="disclaimer-text">
+        免责声明：当前为试用版本。用量统计与计费标准以火山引擎官方平台为准。请妥善保管您的 API Key，切勿泄露给他人。
+      </view>
+    </view>
+  </view>
+</view>
+

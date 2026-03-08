@@ -1,12 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/create/index",
+    "pages/story-detail/index",
+    "pages/story-list/index",
+    "pages/settings/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationBarTitleText": "故事书助手",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f6f6f8"
   },
   "style": "v2",
   "componentFramework": "glass-easel",

@@ -1,0 +1,211 @@
+.page {
+  min-height: 100vh;
+  background: #f6f6f8;
+  padding-bottom: 40rpx;
+}
+
+/* 自定义导航栏，高度由 JS 动态设置 */
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #f6f6f8;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  box-sizing: border-box;
+}
+
+.nav-back {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-back-icon {
+  font-size: 48rpx;
+  color: #0f172a;
+  font-weight: 300;
+}
+
+.nav-title {
+  flex: 1;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.nav-placeholder {
+  width: 72rpx;
+}
+
+.content {
+  padding-top: 24rpx;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
+}
+
+.section {
+  padding-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.section-subtitle {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  color: #64748b;
+}
+
+.form-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 22rpx;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 16rpx;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 22rpx;
+  overflow: hidden;
+  background: #fff;
+}
+
+.input {
+  flex: 1;
+  height: 100rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+}
+
+.input-suffix {
+  width: 80rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 24rpx;
+}
+
+.eye-text {
+  font-size: 26rpx;
+  color: #64748b;
+}
+
+.btn-row {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 24rpx;
+}
+
+.btn-primary {
+  padding: 0;
+  flex: 1;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 22rpx;
+  background: #1152d4;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.btn-secondary {
+  padding: 0;
+  width: 160rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 22rpx;
+  background: rgba(15, 23, 42, 0.08);
+  color: #334155;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.doc-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 22rpx;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.doc-left {
+  flex: 1;
+}
+
+.doc-title {
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.doc-subtitle {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: #64748b;
+}
+
+.doc-btn {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 16rpx 24rpx;
+  background: rgba(17, 82, 212, 0.10);
+  color: #1152d4;
+  font-size: 26rpx;
+  font-weight: 800;
+  border-radius: 16rpx;
+}
+
+.doc-btn-arrow {
+  font-size: 28rpx;
+}
+
+.disclaimer {
+  margin-top: 32rpx;
+  padding: 24rpx;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 22rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.disclaimer-icon {
+  font-size: 36rpx;
+  flex-shrink: 0;
+}
+
+.disclaimer-text {
+  font-size: 26rpx;
+  color: #92400e;
+  line-height: 1.6;
+  font-weight: 500;
+}

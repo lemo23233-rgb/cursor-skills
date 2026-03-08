@@ -1,0 +1,294 @@
+.page {
+  min-height: 100vh;
+  background: #f6f6f8;
+}
+
+/* 进度条（参考 create.html 原型） */
+.progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 48rpx 40rpx 32rpx;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.progress-num {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.progress-step-active .progress-num {
+  background: #1152d4;
+  color: #fff;
+}
+
+.progress-step-active .progress-label {
+  color: #1152d4;
+}
+
+.progress-step-done .progress-num {
+  background: #1152d4;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.progress-step-done .progress-label {
+  color: #1152d4;
+}
+
+.progress-step-disabled .progress-num {
+  background: rgba(15, 23, 42, 0.06);
+  color: #94a3b8;
+}
+
+.progress-label {
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.progress-step-active .progress-label {
+  color: #1152d4;
+}
+
+.progress-step-disabled .progress-label {
+  color: #94a3b8;
+}
+
+.progress-line {
+  flex: 1;
+  height: 4rpx;
+  margin: 28rpx 16rpx 0;
+  background: rgba(15, 23, 42, 0.06);
+  align-self: flex-start;
+}
+
+.progress-line-active {
+  background: rgba(17, 82, 212, 0.2);
+}
+
+.section {
+  padding: 24rpx 28rpx;
+}
+
+.h1 {
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.p {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  color: #64748b;
+}
+
+.field {
+  margin-top: 24rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 12rpx;
+  padding: 0 4rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 280rpx;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 22rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+.primary {
+  margin-top: 24rpx;
+  width: 100%;
+  height: 104rpx;
+  line-height: 104rpx;
+  border-radius: 22rpx;
+  background: #1152d4;
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 800;
+  box-shadow: 0 18rpx 38rpx rgba(17, 82, 212, 0.22);
+}
+
+.field-btn {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.primary-with-icon {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.primary-icon {
+  font-size: 36rpx;
+}
+
+.divider {
+  height: 32rpx;
+  background: rgba(15, 23, 42, 0.04);
+  margin: 0 28rpx;
+}
+
+.h2-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.h2-row-scenes {
+  margin-top: 24rpx;
+}
+
+.h2 {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.tag {
+  font-size: 20rpx;
+  font-weight: 800;
+  color: #1152d4;
+  background: rgba(17, 82, 212, 0.10);
+  padding: 8rpx 16rpx;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.card {
+  background: #fff;
+  border-radius: 22rpx;
+  padding: 24rpx;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(15, 23, 42, 0.04);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.card-icon {
+  font-size: 36rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #1152d4;
+}
+
+.card-outline .card-title {
+  color: #1152d4;
+}
+
+.outline-wrap {
+  margin-top: 16rpx;
+}
+
+.outline {
+  width: 100%;
+  min-height: 220rpx;
+  font-size: 26rpx;
+  color: #475569;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px dashed rgba(15, 23, 42, 0.15);
+  border-radius: 18rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.link {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #1152d4;
+  background: transparent;
+  padding: 0;
+}
+
+.scene {
+  background: #fff;
+  border-radius: 22rpx;
+  padding: 24rpx;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(15, 23, 42, 0.04);
+}
+
+.scene-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.scene-no {
+  font-size: 24rpx;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.scene-delete {
+  font-size: 24rpx;
+  color: #94a3b8;
+  background: transparent;
+  padding: 0;
+}
+
+.scene-delete:active {
+  color: #ef4444;
+}
+
+.scene-text {
+  width: 100%;
+  min-height: 160rpx;
+  font-size: 26rpx;
+  color: #334155;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hint {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.spacer {
+  height: 80rpx;
+}
+

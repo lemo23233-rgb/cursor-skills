@@ -1,54 +1,89 @@
-// index.ts
-// 获取应用实例
-const app = getApp<IAppOption>()
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+import { getApiKey, getLastStory } from '../../services/storage'
+import type { Story } from '../../services/types'
+
+type RecentDisplay = {
+  id: string
+  topic: string
+  outlineShort: string
+  sceneCount: number
+  updatedAt: number
+  coverUrl: string
+  charCount: number
+}
+
+function toRecentDisplay(s: Story | null): RecentDisplay | null {
+  if (!s || !s.id) return null
+  const fullText = (s.outline || '') + (s.scenes || []).join('')
+  const outline = s.outline || ''
+  return {
+    id: s.id,
+    topic: s.topic || '',
+    outlineShort: outline.length > 20 ? outline.slice(0, 20) + '...' : outline,
+    sceneCount: (s.scenes || []).length,
+    updatedAt: s.updatedAt || 0,
+    coverUrl: (s.images || [])[0] || '',
+    charCount: fullText.length,
+  }
+}
 
 Component({
   data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
+    hasApiKey: false,
+    recent: null as RecentDisplay | null,
+    loading: true,
+    loadError: '',
+  },
+  pageLifetimes: {
+    show() {
+      const apiKey = getApiKey()
+      this.setData({
+        hasApiKey: typeof apiKey === 'string' && apiKey.trim().length > 0,
+      })
+      // 已加载过则不重新请求（从别处返回首页不刷新）
+      const { recent, loadError } = this.data
+      if (recent !== null || loadError) {
+        return
+      }
+      this.setData({ loading: true, loadError: '' })
+      getLastStory()
+        .then(story => {
+          this.setData({
+            recent: toRecentDisplay(story),
+            loading: false,
+            loadError: '',
+          })
+        })
+        .catch(err => {
+          this.setData({
+            recent: null,
+            loading: false,
+            loadError: err?.message || '加载失败',
+          })
+        })
     },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
   },
   methods: {
-    // 事件处理函数
-    bindViewTap() {
-      wx.navigateTo({
-        url: '../logs/logs',
-      })
+    goCreate() {
+      wx.navigateTo({ url: '/pages/create/index' })
     },
-    onChooseAvatar(e: any) {
-      const { avatarUrl } = e.detail
-      const { nickName } = this.data.userInfo
-      this.setData({
-        "userInfo.avatarUrl": avatarUrl,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-      })
+    goSettings() {
+      wx.navigateTo({ url: '/pages/settings/index' })
     },
-    onInputChange(e: any) {
-      const nickName = e.detail.value
-      const { avatarUrl } = this.data.userInfo
-      this.setData({
-        "userInfo.nickName": nickName,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-      })
+    goRecent() {
+      const { recent } = this.data
+      if (!recent) {
+        wx.showToast({ title: '暂无最近作品', icon: 'none' })
+        return
+      }
+      // 无插画则进创作页继续编辑，有插画则进详情
+      if (!recent.coverUrl) {
+        wx.navigateTo({ url: `/pages/create/index?id=${encodeURIComponent(recent.id)}` })
+      } else {
+        wx.navigateTo({ url: `/pages/story-detail/index?id=${encodeURIComponent(recent.id)}` })
+      }
     },
-    getUserProfile() {
-      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-      wx.getUserProfile({
-        desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-        success: (res) => {
-          console.log(res)
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    goStoryList() {
+      wx.navigateTo({ url: '/pages/story-list/index' })
     },
   },
 })

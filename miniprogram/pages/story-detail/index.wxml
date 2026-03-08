@@ -1,0 +1,78 @@
+<view class="page page-loading" wx:if="{{loading}}">
+  <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
+    <view class="nav-home" bindtap="goHome">
+      <text class="nav-home-icon">⌂</text>
+    </view>
+    <view class="nav-title">作品详情</view>
+    <view class="nav-placeholder"></view>
+  </view>
+  <view class="loading-wrap" style="padding-top: {{contentPaddingTop}}px;">
+    <view class="loading">加载中…</view>
+  </view>
+</view>
+
+<view class="page" wx:elif="{{story}}">
+  <!-- 自定义导航栏：左上角返回主页 -->
+  <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
+    <view class="nav-home" bindtap="goHome">
+      <text class="nav-home-icon">⌂</text>
+    </view>
+    <view class="nav-title">作品详情</view>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="page-content" style="padding-top: {{contentPaddingTop}}px;">
+  <view class="header">
+    <view class="chapter">Chapter 01</view>
+    <view class="title">{{story.topic}}</view>
+    <view class="meta">共 {{story.scenes.length}} 镜</view>
+  </view>
+
+  <!-- 分享引导 -->
+  <view class="share-guide">
+    <text class="share-guide-icon">📤</text>
+    <view class="share-guide-text">
+      <text class="share-guide-title">分享你的作品</text>
+      <text class="share-guide-desc">点击右上角「...」分享给好友</text>
+    </view>
+  </view>
+
+  <view class="panel" wx:for="{{story.scenes}}" wx:key="index">
+    <view class="panel-media" wx:if="{{story.images && story.images[index]}}">
+    <!-- mode:aspectFill -->
+      <image
+        class="img"
+        src="{{imageSrcs[index]}}"
+        mode="widthFix"
+        data-index="{{index}}"
+        bindtap="previewImage"
+      />
+      <view class="badge">分镜 {{index + 1}}</view>
+    </view>
+
+    <view class="panel-body">
+      <view class="panel-title">分镜 {{index + 1}}</view>
+      <view class="panel-text">{{item}}</view>
+      <button class="save-btn" data-index="{{index}}" bindtap="saveOne">保存此图</button>
+    </view>
+  </view>
+
+  <view class="spacer"></view>
+  </view>
+</view>
+
+<view class="page empty" wx:else>
+  <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
+    <view class="nav-home" bindtap="goHome">
+      <text class="nav-home-icon">⌂</text>
+    </view>
+    <view class="nav-title">作品详情</view>
+    <view class="nav-placeholder"></view>
+  </view>
+  <view class="empty-inner" style="padding-top: {{contentPaddingTop}}px;">
+    <view class="empty-title">作品不存在或已被清理</view>
+    <view class="empty-desc">你可以回到首页重新开始创作。</view>
+    <button class="primary" bindtap="goHome">回到首页</button>
+  </view>
+</view>
+
