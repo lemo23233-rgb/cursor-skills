@@ -31,8 +31,8 @@ Page({
   },
   onShow() {
     // 已加载过则不重新请求（从别处返回作品列表不刷新）
-    const { list, loadError } = this.data
-    if (list.length > 0 || loadError) {
+    const { loadError, loading } = this.data
+    if (loadError || !loading) {
       return
     }
     this.setData({ loading: true, loadError: '' })
