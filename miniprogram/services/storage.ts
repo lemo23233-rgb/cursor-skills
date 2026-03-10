@@ -1,6 +1,7 @@
 import {
   getLastStoryCardFromDB,
   getLastStoryFromDB,
+  getRecentStoriesFromDB,
   getStoryCardsFromDB,
   getStoryFromDB,
   getStoriesFromDB,
@@ -50,6 +51,11 @@ export function getLastStoryCard(): Promise<StoryCard | null> {
 /** 获取最近一条完整作品（含 images，首页封面用） */
 export function getLastStory(): Promise<Story | null> {
   return getLastStoryFromDB()
+}
+
+/** 获取最近 3 天内的作品（首页用） */
+export function getRecentStories(): Promise<Story[]> {
+  return getRecentStoriesFromDB()
 }
 
 /** 保存作品到云数据库 */

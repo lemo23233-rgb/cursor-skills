@@ -1,4 +1,4 @@
-<scroll-view class="page" scroll-y type="list">
+<scroll-view class="page" scroll-y enhanced="{{true}}" show-scrollbar="{{false}}">
   <!-- 进度条：生成大纲后定位到第2步 -->
   <view class="progress">
     <view class="progress-step {{outline ? 'progress-step-done' : 'progress-step-active'}}">

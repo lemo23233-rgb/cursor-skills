@@ -45,11 +45,12 @@ export async function generateOutlineAndScenes(topic: string): Promise<{ outline
 }
 
 /**
- * 每张图单独调用云函数，避免多图一次生成超过 60 秒限制
+ * 每张图单独调用云函数，生成后上传云存储，返回云存储 fileID
  */
 export async function generateImages(
   scenes: string[],
-  onProgress?: (current: number, total: number) => void
+  onProgress?: (current: number, total: number) => void,
+  storyId?: string
 ): Promise<{ images: string[] }> {
   const apiKey = getApiKey()
   if (!apiKey) throw new Error('未配置 API Key，请先到设置页保存')
@@ -60,6 +61,8 @@ export async function generateImages(
     const res = await callCloudFunction<{ images: string[] }>('arkImage', {
       apiKey,
       scenes: [scenes[i]],
+      storyId: storyId || '',
+      sceneIndex: i,
     })
     const list = Array.isArray(res?.images) ? res.images : []
     images.push(list[0] || '')

@@ -1,4 +1,4 @@
-<scroll-view class="page" scroll-y type="list">
+<scroll-view class="page" scroll-y enhanced="{{true}}" show-scrollbar="{{false}}">
   <!-- Hero：圆形图标 + 标题 + 副标题 -->
   <view class="hero">
     <view class="hero-icon-wrap">
@@ -34,21 +34,31 @@
     <view class="loading" wx:if="{{loading && !loadError}}">加载中…</view>
     <view class="load-error" wx:if="{{loadError}}">{{loadError}}</view>
 
-    <!-- 卡片：左图右文，封面用首张插画，标题单行，描述20字，字符数 -->
-    <view class="card card-horizontal" wx:if="{{!loading && recent}}" bindtap="goRecent">
+    <!-- 最近3天作品卡片：左图右文，右下角生成时间 -->
+    <view
+      class="card card-horizontal"
+      wx:for="{{recentList}}"
+      wx:key="id"
+      wx:if="{{!loading && !loadError}}"
+      data-item="{{item}}"
+      bindtap="goRecent"
+    >
       <view class="card-cover">
-        <image wx:if="{{recent.coverUrl}}" class="card-cover-img" src="{{recent.coverUrl}}" mode="aspectFill"/>
+        <image wx:if="{{item.coverUrl}}" class="card-cover-img" src="{{item.coverUrl}}" mode="aspectFill"/>
         <view wx:else class="card-cover-placeholder">
           <text class="card-cover-emoji">📖</text>
         </view>
       </view>
       <view class="card-body">
-        <view class="card-title card-title-single">{{recent.topic}}</view>
-        <view class="card-desc">{{recent.outlineShort}}</view>
-        <view class="card-meta">
-          <text>{{recent.charCount}} 字符</text>
-          <text class="dot">•</text>
-          <text>{{recent.sceneCount}} 幅插画</text>
+        <view class="card-title card-title-single">{{item.topic}}</view>
+        <view class="card-desc">{{item.outlineShort}}</view>
+        <view class="card-bottom">
+          <view class="card-meta">
+            <text>{{item.charCount}} 字符</text>
+            <text class="dot">•</text>
+            <text>{{item.sceneCount}} 幅插画</text>
+          </view>
+          <view class="card-time">{{item.updatedAtText}}</view>
         </view>
       </view>
     </view>

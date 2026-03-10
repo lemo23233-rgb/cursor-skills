@@ -1,4 +1,4 @@
-import { getStories } from '../../services/storage'
+import { getApiKey, getStories } from '../../services/storage'
 import type { Story } from '../../services/types'
 
 type ListItemDisplay = {
@@ -8,6 +8,17 @@ type ListItemDisplay = {
   sceneCount: number
   coverUrl: string
   charCount: number
+  updatedAtText: string
+}
+
+function formatTime(ts: number): string {
+  if (!ts) return ''
+  const d = new Date(ts)
+  const m = d.getMonth() + 1
+  const day = d.getDate()
+  const h = d.getHours()
+  const min = d.getMinutes()
+  return `${m}月${day}日 ${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`
 }
 
 function toListItem(s: Story): ListItemDisplay {
@@ -16,10 +27,11 @@ function toListItem(s: Story): ListItemDisplay {
   return {
     id: s.id,
     topic: s.topic || '',
-    outlineShort: outline.length > 20 ? outline.slice(0, 20) + '...' : outline,
+    outlineShort: outline,
     sceneCount: (s.scenes || []).length,
     coverUrl: (s.images || [])[0] || '',
     charCount: fullText.length,
+    updatedAtText: formatTime(s.updatedAt || s.createdAt || 0),
   }
 }
 
@@ -61,6 +73,19 @@ Page({
     }
   },
   goCreate() {
+    const apiKey = getApiKey()
+    if (!apiKey || !apiKey.trim()) {
+      wx.showModal({
+        title: '需要配置',
+        content: '需在设置中配置 API Key 方可使用创作功能',
+        confirmText: '去设置',
+        cancelText: '取消',
+        success: r => {
+          if (r.confirm) wx.navigateTo({ url: '/pages/settings/index' })
+        },
+      })
+      return
+    }
     wx.navigateTo({ url: '/pages/create/index' })
   },
 })

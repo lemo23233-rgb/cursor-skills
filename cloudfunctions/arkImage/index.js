@@ -1,5 +1,5 @@
 const cloud = require('wx-server-sdk')
-cloud.init()
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV })
 
 const https = require('https')
 
@@ -65,6 +65,34 @@ function normalizePrompt(scene, style) {
   return `${styleBlock}分镜画面描述：${s}`
 }
 
+/** 从 URL 下载图片为 Buffer */
+function downloadImage(url) {
+  return new Promise((resolve, reject) => {
+    const u = new URL(url)
+    https.get(
+      url,
+      {
+        headers: { 'User-Agent': 'WeChat-MiniProgram' },
+      },
+      res => {
+        const chunks = []
+        res.on('data', chunk => chunks.push(chunk))
+        res.on('end', () => resolve(Buffer.concat(chunks)))
+        res.on('error', reject)
+      }
+    ).on('error', reject)
+  })
+}
+
+/** 上传到云存储，返回 fileID */
+async function uploadToCloudStorage(imgData, cloudPath) {
+  const result = await cloud.uploadFile({
+    cloudPath,
+    fileContent: imgData,
+  })
+  return result.fileID
+}
+
 exports.main = async (event, context) => {
   try {
     const payload = event && typeof event.data !== 'undefined' ? event.data : event || {}
@@ -72,6 +100,8 @@ exports.main = async (event, context) => {
     const scenes = Array.isArray(payload.scenes) ? payload.scenes : []
     const size = typeof payload.size === 'string' && payload.size.trim() ? payload.size.trim() : DEFAULT_SIZE
     const style = typeof payload.style === 'string' ? payload.style : ''
+    const storyId = typeof payload.storyId === 'string' ? payload.storyId.trim() : ''
+    const sceneIndex = typeof payload.sceneIndex === 'number' ? payload.sceneIndex : 0
 
     console.log('[arkImage] event keys:', typeof event === 'object' && event ? Object.keys(event) : 'null')
     console.log('[arkImage] hasApiKey:', !!apiKey, 'scenesCount:', scenes.length, 'IMAGE_MODEL:', IMAGE_MODEL ? 'set' : 'empty')
@@ -113,7 +143,21 @@ exports.main = async (event, context) => {
       const item = json?.data?.[0] || {}
       const imgUrl = item.url || item.image_url
       const b64 = item.b64_json || item.base64 || item.image_base64
-      images.push(imgUrl || b64 || '')
+      let imgData = null
+      if (b64) {
+        imgData = Buffer.from(b64, 'base64')
+      } else if (imgUrl) {
+        imgData = await downloadImage(imgUrl)
+      }
+      if (!imgData || imgData.length === 0) {
+        images.push('')
+        continue
+      }
+      const cloudPath = storyId
+        ? `stories/${storyId}/${sceneIndex}.png`
+        : `stories/temp/${Date.now()}_${sceneIndex}.png`
+      const fileID = await uploadToCloudStorage(imgData, cloudPath)
+      images.push(fileID)
     }
     console.log('[arkImage] upstream done, images count:', images.length)
     return { images }

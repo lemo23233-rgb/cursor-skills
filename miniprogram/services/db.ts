@@ -99,6 +99,26 @@ export function getLastStoryFromDB(): Promise<Story | null> {
   })
 }
 
+const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000
+
+/**
+ * 获取最近 3 天内的作品（含 images，首页用）
+ */
+export function getRecentStoriesFromDB(): Promise<Story[]> {
+  const since = Date.now() - THREE_DAYS_MS
+  const db = getDB()
+  const _ = db.command
+  return new Promise((resolve, reject) => {
+    db.collection(COLLECTION)
+      .where({ updatedAt: _.gte(since) })
+      .orderBy('updatedAt', 'desc')
+      .limit(20)
+      .get()
+      .then(res => resolve((res.data as any[]).map(docToStory)))
+      .catch(reject)
+  })
+}
+
 /**
  * 按 id 获取单条作品详情
  */

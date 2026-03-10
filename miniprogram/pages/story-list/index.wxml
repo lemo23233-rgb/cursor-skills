@@ -1,17 +1,8 @@
 <view class="page">
-  <!-- 标题居中，左侧书本图标 -->
-  <view class="header">
-    <view class="header-icon">
-      <text class="header-icon-emoji">📖</text>
-    </view>
-    <view class="header-title">作品列表</view>
-    <view class="header-placeholder"></view>
-  </view>
-
   <view class="loading" wx:if="{{loading}}">加载中…</view>
   <view class="load-error" wx:if="{{!loading && loadError}}">{{loadError}}</view>
 
-  <scroll-view wx:if="{{!loading && !loadError}}" class="list" scroll-y type="list">
+  <scroll-view wx:if="{{!loading && !loadError}}" class="list" scroll-y enhanced="{{true}}" show-scrollbar="{{false}}" scroll-with-animation>
     <!-- 与首页一致的左图右文卡片 -->
     <view
       class="card card-horizontal"
@@ -30,10 +21,13 @@
       <view class="card-body">
         <view class="card-title card-title-single">{{item.topic}}</view>
         <view class="card-desc">{{item.outlineShort}}</view>
-        <view class="card-meta">
-          <text>{{item.charCount}} 字符</text>
-          <text class="dot">•</text>
-          <text>{{item.sceneCount}} 幅插画</text>
+        <view class="card-bottom">
+          <view class="card-meta">
+            <text>{{item.charCount}} 字符</text>
+            <text class="dot">•</text>
+            <text>{{item.sceneCount}} 幅插画</text>
+          </view>
+          <view class="card-time">{{item.updatedAtText}}</view>
         </view>
       </view>
     </view>

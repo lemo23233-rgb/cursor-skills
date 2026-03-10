@@ -117,13 +117,13 @@ Page({
       return
     }
     this.setData({ generatingImages: true })
+    const id = this.data.storyId || createId()
     wx.showLoading({ title: `正在生成第 1/${scenes.length} 张…`, mask: true })
     try {
       const res = await generateImages(scenes, (current, total) => {
         wx.showLoading({ title: `正在生成第 ${current}/${total} 张…`, mask: true })
-      })
+      }, id)
       const images = Array.isArray(res.images) ? res.images : []
-      const id = this.data.storyId || createId()
       const now = Date.now()
       let createdAt = now
       if (this.data.storyId) {
@@ -140,6 +140,7 @@ Page({
         updatedAt: now,
       }
       await saveStory(story)
+      ;(getApp() as any).globalData.indexRecentCache = null
       wx.navigateTo({ url: `/pages/story-detail/index?id=${encodeURIComponent(id)}` })
     } catch (err: any) {
       wx.showModal({

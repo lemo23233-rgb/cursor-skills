@@ -1,10 +1,22 @@
 import { getStory } from '../../services/storage'
 import type { Story } from '../../services/types'
 
+function formatTime(ts: number): string {
+  if (!ts) return ''
+  const d = new Date(ts)
+  const y = d.getFullYear()
+  const m = d.getMonth() + 1
+  const day = d.getDate()
+  const h = d.getHours()
+  const min = d.getMinutes()
+  return `${y}年${m}月${day}日 ${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`
+}
+
 function toImageSrc(img: string) {
   const s = (img || '').trim()
   if (!s) return ''
   if (/^https?:\/\//i.test(s)) return s
+  if (/^cloud:\/\//i.test(s)) return s
   if (/^data:image\//i.test(s)) return s
   return `data:image/png;base64,${s}`
 }
@@ -90,9 +102,11 @@ Page({
     }
     getStory(id)
       .then(story => {
+        const timeStr = story ? formatTime(story.updatedAt || story.createdAt || 0) : ''
         this.setData({
           story,
           imageSrcs: story?.images ? story.images.map(toImageSrc) : [],
+          storyTimeText: timeStr,
           loading: false,
         })
       })
@@ -124,7 +138,12 @@ Page({
     try {
       await ensureAlbumPermission()
       let filePath: string
-      if (/^https?:\/\//i.test(img)) {
+      if (/^cloud:\/\//i.test(img)) {
+        const res = await wx.cloud.getTempFileURL({ fileList: [img] })
+        const tempUrl = res.fileList?.[0]?.tempFileURL
+        if (!tempUrl) throw new Error('获取云存储临时链接失败')
+        filePath = await downloadToTemp(tempUrl)
+      } else if (/^https?:\/\//i.test(img)) {
         filePath = await downloadToTemp(img)
       } else if (/^data:image\//i.test(img)) {
         const base64 = img.split(',').slice(1).join(',')
@@ -153,7 +172,14 @@ Page({
     }
   },
   goHome() {
-    wx.reLaunch({ url: '/pages/index/index' })
+    const pages = getCurrentPages()
+    const indexRoute = 'pages/index/index'
+    const idx = pages.findIndex((p: any) => (p.route || (p as any).__route__) === indexRoute)
+    if (idx >= 0) {
+      wx.navigateBack({ delta: pages.length - 1 - idx })
+    } else {
+      wx.reLaunch({ url: '/pages/index/index' })
+    }
   },
   onShareAppMessage() {
     const story = this.data.story

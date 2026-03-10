@@ -1,7 +1,7 @@
 <view class="page page-loading" wx:if="{{loading}}">
   <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
     <view class="nav-home" bindtap="goHome">
-      <text class="nav-home-icon">⌂</text>
+      <text class="nav-home-icon">🏠</text>
     </view>
     <view class="nav-title">作品详情</view>
     <view class="nav-placeholder"></view>
@@ -15,7 +15,7 @@
   <!-- 自定义导航栏：左上角返回主页 -->
   <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
     <view class="nav-home" bindtap="goHome">
-      <text class="nav-home-icon">⌂</text>
+      <text class="nav-home-icon">🏠</text>
     </view>
     <view class="nav-title">作品详情</view>
     <view class="nav-placeholder"></view>
@@ -25,7 +25,10 @@
   <view class="header">
     <view class="chapter">Chapter 01</view>
     <view class="title">{{story.topic}}</view>
-    <view class="meta">共 {{story.scenes.length}} 镜</view>
+    <view class="article-info">
+      <view class="meta">共 {{story.scenes.length}} 镜</view>
+      <view class="header-time" wx:if="{{storyTimeText}}">{{storyTimeText}}</view>
+    </view>
   </view>
 
   <!-- 分享引导 -->
@@ -64,7 +67,7 @@
 <view class="page empty" wx:else>
   <view class="custom-nav" style="height: {{navBarHeight}}px; padding-top: {{statusBarHeight}}px;">
     <view class="nav-home" bindtap="goHome">
-      <text class="nav-home-icon">⌂</text>
+      <text class="nav-home-icon">🏠</text>
     </view>
     <view class="nav-title">作品详情</view>
     <view class="nav-placeholder"></view>

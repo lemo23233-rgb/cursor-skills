@@ -134,6 +134,10 @@
   border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
+.section .card-horizontal {
+  margin-bottom: 18rpx;
+}
+
 /* 最近作品卡片：左图右文（原型） */
 .card-horizontal {
   display: flex;
@@ -194,9 +198,15 @@
   font-size: 26rpx;
   color: #475569;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card-meta {
@@ -206,6 +216,13 @@
   display: flex;
   align-items: center;
   gap: 10rpx;
+}
+
+.card-time {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #94a3b8;
+  text-align: right;
 }
 
 .dot {
@@ -282,7 +299,7 @@
 
 /* 创建新故事卡片（参考原型 index.html：虚线框 + add 图标） */
 .create-card {
-  margin-top: 24rpx;
+  margin: 24rpx 0 30rpx;
   background: rgba(248, 250, 252, 0.8);
   border-radius: 22rpx;
   border: 2px dashed rgba(15, 23, 42, 0.15);
